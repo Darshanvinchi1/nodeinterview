@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>CRUD</title>
+</head>
+
+<body>
+    <div style="padding: 24px;">
+        <a class="btn btn-primary" href="/addCategory">add category</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>category Id</th>
+                    <th>category name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categorys.forEach(function(category){ %>
+                    <tr>
+                        <td><%= category.Id  %> </td>
+                        <td>
+                            <a href="/product/<%= category.Id %>"><%= category.category_name  %></a>
+                            
+                        </td>
+                        <td>
+                            <a href="/edit/category/<%= category.Id %>">edit</a>
+                            <a href="/delete/category/<%= category.Id %>">Delete</a>
+
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div>
+            <% for(var i=1; i<=pagecount; i++){ %>
+            <!-- <% %> -->
+            <a href="/categories?page=<%=i%>"><%= i %></a>
+
+            <%}%>
+        </div>
+    </div>
+</body>
+
+</html>
